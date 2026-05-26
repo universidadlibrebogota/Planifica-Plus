@@ -309,3 +309,40 @@ body {
 .modal-box { background: white; border-radius: 18px; width: 100%; padding: 18px; }
 .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
 .close-modal { background: none; border: none; font-size: 1.5rem; cursor: pointer; }
+/* ================= LOGIN ICONOS ================= */
+
+.logo-icon img{
+    width: 95px;
+    height: 95px;
+    object-fit: contain;
+}
+
+/* CONTENEDOR INPUT + ICONO */
+
+.input-icon-box{
+    position: relative;
+    width: 100%;
+}
+
+/* INPUTS */
+
+.input-icon-box input{
+    width: 100%;
+    padding-left: 42px;
+}
+
+/* ICONOS */
+
+.input-icon{
+    position: absolute;
+
+    left: 14px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 18px;
+    height: 18px;
+
+    opacity: 0.65;
+}

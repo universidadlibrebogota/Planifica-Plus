@@ -94,7 +94,20 @@ function renderAuthForm() {
                 </div>
                 <div class="form-group">
                     <label>Contraseña</label>
-                    <input type="password" id="login-pass" placeholder="••••••••" required value="123456">
+
+                    <div class="input-icon-box">
+
+                        <img src="img/lock.png" class="input-icon">
+
+                        <input 
+                            type="password"
+                            id="login-pass"
+                            placeholder="••••••••"
+                            required
+                            value="123456"
+                        >
+
+                    </div>
                 </div>
                 <div class="forgot-link">
                     <a href="#" onclick="switchAuthTab('forgot')">¿Olvidaste tu contraseña?</a>

@@ -53,7 +53,9 @@ function renderAuthLayout() {
     return `
         <div class="auth-wrapper">
             <div class="auth-header">
-                <div class="logo-icon">🍃</div>
+                <div class="logo-icon">
+                    <img src="img/Logo.png" alt="Logo Planifica Plus">
+                </div>
                 <h1>Planifica Plus</h1>
                 <p>Organiza tu vida saludablemente</p>
             </div>
@@ -76,7 +78,19 @@ function renderAuthForm() {
             <form id="form-login">
                 <div class="form-group">
                     <label>Correo electrónico</label>
-                    <input type="email" id="login-email" placeholder="tu@email.com" required value="demo@email.com">
+
+                    <div class="input-icon-box">
+                        <img src="img/mail.png" class="input-icon" alt="Correo">
+
+                        <input 
+                            type="email" 
+                            id="login-email" 
+                            placeholder="tu@email.com"
+                            required
+                            value="demo@email.com"
+
+                        >
+                    </div>
                 </div>
                 <div class="form-group">
                     <label>Contraseña</label>

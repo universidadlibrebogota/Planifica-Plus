@@ -54,7 +54,7 @@ function renderAuthLayout() {
         <div class="auth-wrapper">
             <div class="auth-header">
                 <div class="logo-icon">
-                    <img src="img/Logo.png" alt="Logo Planifica Plus">
+                    <img src="img/logo.png" alt="Logo Planifica Plus">
                 </div>
                 <h1>Planifica Plus</h1>
                 <p>Organiza tu vida saludablemente</p>

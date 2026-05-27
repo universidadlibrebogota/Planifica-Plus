@@ -273,8 +273,50 @@ function renderMainLayout() {
 
                     </div>
                     <div>
-                        <h2 id="app-header-title">Planifica Plus</h2>
-                        <span class="header-date">Hoy, ${new Date().toLocaleDateString('es-ES', { day: 'numeric', month: 'short' })}</span>
+                        <h2 id="app-header-title">
+
+                            ${
+                                currentMainTab === 'lista'
+                                ? 'Lista'
+
+                                : currentMainTab === 'amigos'
+                                ? 'Amigos'
+
+                                : currentMainTab === 'calendario'
+                                ? 'Calendario'
+
+                                : currentMainTab === 'logros'
+                                ? 'Logros'
+
+                                : currentMainTab === 'herramientas'
+                                ? 'Herramientas'
+
+                                : 'Perfil'
+                            }
+
+                        </h2>
+                        <span class="header-date">
+
+                            ${
+                                currentMainTab === 'lista'
+                                ? 'Tus actividades organizadas'
+
+                                : currentMainTab === 'amigos'
+                                ? 'Colabora con tus amigos'
+
+                                : currentMainTab === 'calendario'
+                                ? 'Visualiza tus eventos'
+
+                                : currentMainTab === 'logros'
+                                ? 'Tu progreso personal'
+
+                                : currentMainTab === 'herramientas'
+                                ? 'Mejora tu productividad'
+
+                                : 'Información de usuario'
+                            }
+
+                        </span>
                     </div>
                 </div>
                 <div class="header-actions">

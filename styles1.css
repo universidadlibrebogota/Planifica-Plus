@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@800;900&display=swap');
+
 :root {
     --primary-color: #00aa4f;
     --primary-hover: #008f41;
@@ -1490,15 +1492,6 @@ body.dark-mode .profile-tabs { background: #0f172a; }
     overflow:hidden;
 }
 
-.achievement-progress-fill{
-
-    height:100%;
-
-    background:var(--primary-color);
-
-    border-radius:999px;
-}
-
 .nav-img{
     width: 24px;
     height: 24px;
@@ -1545,14 +1538,6 @@ body.dark-mode .profile-tabs { background: #0f172a; }
     margin-top: 4px;
 }
 
-/* --- SOLICITUD: RELLENO DE LA BARRA DE PROGRESO CON DEGRADADO --- */
-.achievement-progress-fill {
-    height: 100%;
-    /* Degradado lineal usando los dos colores solicitados: FDC700 y FF8904 */
-    background: linear-gradient(90deg, #FDC700 0%, #FF8904 100%);
-    border-radius: 10px;
-    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
 
 /* Estilo para los iconos de los logros */
 .achievement-icon {
@@ -1612,20 +1597,6 @@ body.dark-mode .profile-tabs { background: #0f172a; }
     margin-top: 5px;
 }
 
-/* --- SOLICITUD: BARRA DE PROGRESO POR DEFECTO (EN PROGRESO) --- */
-.achievement-progress-fill {
-    height: 100%;
-    background-color: #00C950 !important; /* Color verde brillante 00C950 para logros en progreso */
-    border-radius: 10px;
-    transition: width 0.5s ease-in-out;
-}
-
-/* --- SOLICITUD: BARRA DE PROGRESO DEGRADADA AL COMPLETARSE --- */
-.achievement-card.completed .achievement-progress-fill {
-    /* Degradado lineal con los colores solicitados: FDC700 y FF8904 */
-    background: linear-gradient(90deg, #FDC700 0%, #FF8904 100%) !important;
-}
-
 /* Ajustes visuales de los iconos e imágenes */
 .achievement-icon {
     width: 50px;
@@ -1643,4 +1614,62 @@ body.dark-mode .profile-tabs { background: #0f172a; }
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+/* ==========================================================================
+   ESTILOS ADAPTADOS PARA LAS TARJETAS DE ESTADÍSTICAS SUPERIERES
+   ========================================================================== */
+
+/* --- 1. TARJETA DE LOGROS COMPLETADOS (Color Verde 58CC02) --- */
+.logros-stats-grid .logro-stat-card:nth-child(1) {
+    background-color: #58CC02 !important;
+    border: none !important;
+    box-shadow: 0 4px 12px rgba(88, 204, 2, 0.2);
+}
+
+/* --- 2. TARJETA DE LOGROS TOTALES (Color Morado A855F7) --- */
+.logros-stats-grid .logro-stat-card:nth-child(2) {
+    background-color: #A855F7 !important;
+    border: none !important;
+    box-shadow: 0 4px 12px rgba(168, 85, 247, 0.2);
+}
+
+/* --- 3. TARJETA DE PROGRESO GENERAL (Degradado FF9900 a FF4444) --- */
+.logros-stats-grid .logro-stat-card:nth-child(3) {
+    background: linear-gradient(135deg, #FF9900 0%, #FF4444 100%) !important;
+    border: none !important;
+    box-shadow: 0 4px 12px rgba(255, 68, 68, 0.2);
+}
+
+/* --- CONFIGURACIÓN DE TIPOGRAFÍA NUNITO EXTRA BOLD Y TEXTO BLANCO --- */
+/* Se aplica a las tres tarjetas superiores para que todo el texto y números sean blancos */
+.logros-stats-grid .logro-stat-card h3,
+.logros-stats-grid .logro-stat-card p,
+.logros-stats-grid .logro-stat-card span {
+    color: #FFFFFF !important;
+    font-family: 'Nunito', sans-serif !important;
+    font-weight: 800 !important; /* Nunito ExtraBold */
+}
+
+/* Un pequeño ajuste opcional por si quieres que los títulos (como "COMPLETADOS") sean sutilmente más suaves */
+.logros-stats-grid .logro-stat-card h3 {
+    color: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* --- SOLICITUD: BARRA DE PROGRESO DEGRADADA AL COMPLETARSE --- */
+.achievement-card.completed .achievement-progress-fill {
+    /* Degradado lineal con los colores solicitados: FDC700 y FF8904 */
+    background: linear-gradient(90deg, #FDC700 0%, #FF8904 100%) !important;
+}
+/* --- BARRA DE PROGRESO PARA LOGROS NO TERMINADOS --- */
+.achievement-progress-fill {
+    height: 100%;
+    background-color: #00C950 !important; /* Color verde 00C950 cuando no está completado */
+    border-radius: 10px;
+    transition: width 0.5s ease-in-out;
+}
+
+/* Si tienes estilos para cuando ya se completa y quieres que cambie de color, puedes dejarlo así: */
+.achievement-card.completed .achievement-progress-fill {
+    background-color: #FFDF20 !important; /* O el color que prefieras cuando ya se complete */
 }

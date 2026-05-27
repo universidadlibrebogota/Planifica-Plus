@@ -210,10 +210,31 @@ function renderAuthForm() {
                     <input type="text" id="reg-name" placeholder="Tu nombre" required>
                 </div>
                 <div class="form-group">
+                    <label>Correo electrónico</label>
+                    <div class="input-icon-box">
+                        <img src="img/mail.png" class="input-icon" alt="Correo">
+                        <input type="email" id="reg-email" placeholder="tu@email.com" required>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label>Número de teléfono</label>
                     <div class="input-icon-box">
                         <span class="input-icon" style="font-size:16px;opacity:0.65;">📱</span>
                         <input type="tel" id="reg-phone" placeholder="Ej. 3001234567" required style="padding-left:42px;">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Contraseña</label>
+                    <div class="input-icon-box">
+                        <img src="img/lock.png" class="input-icon" alt="Contraseña">
+                        <input type="password" id="reg-pass" placeholder="Mínimo 6 caracteres" required minlength="6">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Confirmar contraseña</label>
+                    <div class="input-icon-box">
+                        <img src="img/lock.png" class="input-icon" alt="Confirmar contraseña">
+                        <input type="password" id="reg-pass-confirm" placeholder="Repite tu contraseña" required minlength="6">
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Crear Cuenta</button>
@@ -1167,18 +1188,26 @@ function bindAuthEvents() {
     if (regForm) {
         regForm.addEventListener("submit", (e) => {
             e.preventDefault();
-            const name  = document.getElementById("reg-name").value.trim();
-            const phone = document.getElementById("reg-phone").value.trim();
+            const name        = document.getElementById("reg-name").value.trim();
+            const email       = document.getElementById("reg-email").value.trim().toLowerCase();
+            const phone       = document.getElementById("reg-phone").value.trim();
+            const pass        = document.getElementById("reg-pass").value;
+            const passConfirm = document.getElementById("reg-pass-confirm").value;
 
-            if (!name) { showToast("Ingresa tu nombre.", "error"); return; }
+            if (!name)  { showToast("Ingresa tu nombre.", "error"); return; }
+            if (!email) { showToast("Ingresa tu correo electrónico.", "error"); return; }
             if (!phone) { showToast("Ingresa tu número de teléfono.", "error"); return; }
+            if (pass.length < 6) { showToast("La contraseña debe tener al menos 6 caracteres.", "error"); return; }
+            if (pass !== passConfirm) { showToast("Las contraseñas no coinciden. Verifica e intenta de nuevo.", "error"); return; }
 
-            // Generar email automático a partir del nombre para uso interno
-            const generatedEmail = name.toLowerCase().replace(/\s+/g,'') + '_' + phone.slice(-4) + '@planificaplus.app';
-            const defaultPass = phone;
+            // Verificar que el correo no esté registrado
+            if (usersDB.find(u => u.email === email)) {
+                showToast("Este correo ya está registrado. Intenta iniciar sesión.", "error");
+                return;
+            }
 
-            usersDB.push({ name, email: generatedEmail, pass: defaultPass, phone, avatar: '👤', bio: '', avatarImg: null });
-            showToast("Cuenta creada. Ya puedes iniciar sesión.", "success");
+            usersDB.push({ name, email, pass, phone, avatar: '👤', bio: '', avatarImg: null });
+            showToast("¡Cuenta creada exitosamente! Ya puedes iniciar sesión.", "success");
             currentAuthView = 'login';
             renderAppRouter();
         });
